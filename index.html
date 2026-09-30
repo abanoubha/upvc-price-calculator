@@ -1,1 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>
+        uPVC Doors & Windows Price Calculator
+    </title>
+    <meta name="description"
+        content="Interactive calculator to estimate instant prices and installation costs for uPVC profiles, doors, windows, glass, and hardware accessories in Egypt.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://abanoubhanna.com/tools/upvc-window-door-calculator/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="uPVC Doors & Windows Price Calculator">
+    <meta property="og:description"
+        content="Interactive calculator to estimate instant prices and installation costs for uPVC profiles, doors, windows, glass, and hardware accessories in Egypt.">
+    <meta property="og:url" content="https://abanoubhanna.com/tools/upvc-window-door-calculator/">
+    <meta property="og:site_name" content="Abanoub Hanna">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="uPVC Doors & Windows Price Calculator">
+    <meta name="twitter:description"
+        content="Interactive calculator to estimate instant prices and installation costs for uPVC profiles, doors, windows, glass, and hardware accessories in Egypt.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    <script type="text/javascript" src="script.js" async="async" defer="defer"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="site-title">
+                <a href="/">Abanoub Hanna</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/posts/">Posts</a></li>
+                    <li><a href="/pages/about/">About</a></li>
+                    <li><a href="/pages/contact/">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="breadcrumbs">
+            <a href="/">Home</a>
+            &rsaquo;
+            <a href="/tools/">Tools</a>
+            &rsaquo;
+            <span>uPVC Price Calculator</span>
+        </div>
+
+        <h1 class="page-title">
+            uPVC Doors & Windows Price Calculator
+        </h1>
+        <p class="page-description">
+            Specify the required dimensions and specifications to estimate real-time cost for profiles, glass, and
+            hardware accessories.
+        </p>
+
+        <div class="converter-card">
+            <div class="section-title">Design & Architectural Preview</div>
+            <div class="canvas-container">
+                <svg id="windowCanvas" viewBox="0 0 400 300"></svg>
+            </div>
+
+            <div class="section-title">Dimensions & Layout</div>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label for="width">Overall Width in Millimeters (mm)</label>
+                    <input type="number" id="width" value="1200" min="400" max="3000" step="10">
+                </div>
+                <div class="form-group">
+                    <label for="height">Overall Height in Millimeters (mm)</label>
+                    <input type="number" id="height" value="1400" min="400" max="3000" step="10">
+                </div>
+            </div>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label for="sections">Sash Configuration</label>
+                    <select id="sections">
+                        <option value="1">Single Sash (1 Pane)</option>
+                        <option value="2" selected>Double Sash (2 Panes)</option>
+                        <option value="3">Triple Sash (3 Panes)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="openType">Opening System</label>
+                    <select id="openType">
+                        <option value="fixed">Fixed Frame</option>
+                        <option value="casement" selected>Side Casement</option>
+                        <option value="tilt-turn">Tilt & Turn</option>
+                        <option value="sliding">Horizontal Sliding</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="section-title">Materials & Profile Specifications</div>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label for="profileSeries">Profile Series</label>
+                    <select id="profileSeries">
+                        <option value="60">60 mm (3 Chamber Standard)</option>
+                        <option value="70" selected>70 mm (5 Chamber Premium)</option>
+                        <option value="80">80 mm (6 Chamber Acoustic)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="color">Profile Finish / Color</label>
+                    <select id="color">
+                        <option value="white" selected>Standard White</option>
+                        <option value="golden-oak">Golden Oak Laminated</option>
+                        <option value="dark-oak">Dark Oak Laminated</option>
+                        <option value="anthracite">Anthracite Grey Laminated</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label for="glassType">Glazing Unit</label>
+                    <select id="glassType">
+                        <option value="single">Single Clear Glass (6mm)</option>
+                        <option value="double" selected>Double Sealed Glass (24mm)</option>
+                        <option value="double-lowe">Double Low-E Glass (24mm)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="hardware">Hardware & Locking Tier</label>
+                    <select id="hardware">
+                        <option value="standard" selected>Multi-Point Lock</option>
+                        <option value="heavy">Heavy-Duty Security Lock</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="section-title">Estimated Total Cost</div>
+            <div class="price-display" id="totalPrice">EGP 0.00</div>
+
+            <table class="bom-table">
+                <tbody>
+                    <tr>
+                        <td>Profile Length</td>
+                        <td id="bomProfile">0.00 m</td>
+                    </tr>
+                    <tr>
+                        <td>Glass Surface Area</td>
+                        <td id="bomGlass">0.00 m²</td>
+                    </tr>
+                    <tr>
+                        <td>Profile Cost</td>
+                        <td id="costProfile">EGP 0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Glazing Cost</td>
+                        <td id="costGlass">EGP 0.00</td>
+                    </tr>
+                    <tr>
+                        <td>Hardware & Accessories</td>
+                        <td id="costHardware">EGP 0.00</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="recommendation-section">
+                <div class="section-title">Recommended Service Providers</div>
+                <p>To inquire about current rates and operational details, feel free to contact these recommended uPVC
+                    doors and windows companies:</p>
+                <ul>
+                    <li>
+                        <a href="https://www.pvcegypt.com/">PVC Egypt</a>: uPVC doors and windows in Cairo and Giza.
+                    </li>
+                    <li>
+                        <a href="https://upvceg.com/">uPVC Egypt</a>: uPVC doors and windows across all governorates in
+                        Egypt.
+                    </li>
+                    <li>
+                        <a href="https://elegantupvchouse.com/">Elegant uPVC House</a>: Doors and windows in Aswan,
+                        Luxor, Qena, Sohag, and Asyut.
+                    </li>
+                    <li>
+                        <a href="https://3makupvc.com/">3MAK</a>: uPVC doors & windows, aluminum profiles, shower
+                        cabins, and rolling shutters.
+                    </li>
+                    <li>
+                        <a href="https://joupvc.com/">JO Company</a>: uPVC doors, windows, and kitchens in Cairo and
+                        Giza.
+                    </li>
+                    <li>
+                        <a href="https://upvcandkitchen.com/">uPVC & Kitchen</a>: Kitchens, uPVC doors, and windows in
+                        Cairo and Giza.
+                    </li>
+                </ul>
+            </div>
+
+            <p style="margin-top: 25px;">
+                uPVC Doors & Windows Price Calculator
+                <a href="/tools/upvc-window-door-calculator/arabic/" style="color: var(--accent-color);">
+                    in Arabic:
+                    حاسبة أسعار الأبواب والشبابيك اليو بي في سي
+                </a>
+            </p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2017-<span id="year"></span> Abanoub Hanna. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
